@@ -11,6 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 	<meta name="description" content=""></meta>
 	<meta name="author" content=""></meta>
+	<h:outputStylesheet library="css" name="reddit-clone.css" />
 	<link rel="shortcut icon"
 		href="http://getbootstrap.com/docs-assets/ico/favicon.png" />
 
@@ -37,17 +38,35 @@
 					href="./Jumbotron Template for Bootstrap_files/Jumbotron Template for Bootstrap.htm">Reddit-Clone</a>
 			</div>
 			<div class="navbar-collapse collapse">
-				<form class="navbar-form navbar-right">
-					<div class="form-group">
-						<p:inputText id="username" styleClass="form-control"
-							value="#{userBean.username}" />
-					</div>
-					<div class="form-group">
-						<h:inputSecret id="password" styleClass="form-control"
-							value="#{userBean.username}" />
-					</div>
-					<button type="submit" class="btn btn-success">Sign in</button>
-				</form>
+				<h:form class="navbar-form navbar-right">
+					<!-- Login Container -->
+					<h:panelGroup rendered="#{!userBean.loggedIn}">
+						<div class="form-group">
+							<p:inputText id="username" styleClass="form-control"
+								value="#{userBean.username}" />
+						</div>
+						<div class="form-group">
+							<h:inputSecret id="password" styleClass="form-control"
+								value="#{userBean.password}" />
+						</div>
+						<h:commandButton styleClass="btn btn-success"
+							action="#{userBean.doLogin}" value="#{i18n['login']}"></h:commandButton>
+					</h:panelGroup>
+					<!-- / Login Container -->
+					<!--  Loggedin Container -->
+					<h:panelGroup rendered="#{userBean.loggedIn}">
+						<div class="form-group">
+							<h:outputText styleClass="banner-text"
+								value="#{i18n['welcome']} #{userBean.username}"></h:outputText>
+						</div>
+						<div class="form-group">
+							<h:commandButton styleClass="btn btn-success"
+								action="#{userBean.doLogout}" value="#{i18n['logout']}"></h:commandButton>
+						</div>
+					</h:panelGroup>
+					<!--  / Loggedin Container -->
+
+				</h:form>
 			</div>
 			<!--/.navbar-collapse -->
 		</div>
@@ -63,6 +82,9 @@
 				website. It includes a large callout called a jumbotron and three
 				supporting pieces of content. Use it as a starting point to create
 				something more unique.</p>
+				<p>Login: chrigi Password: foobar</p>
+			<h:outputText value="Logged in: #{userBean.loggedIn}"></h:outputText>
+
 			<p>
 				<!-- <a class="btn btn-primary btn-lg" role="button">Learn more »</a>-->
 			</p>
