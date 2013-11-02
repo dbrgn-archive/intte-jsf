@@ -15,14 +15,5 @@
 				<h:outputText value="posted by #{post.user.username}"></h:outputText>
 			</h:column>
 		</h:dataTable>
-		<h:form id="form">
-
-			<p:tree value="#{treeBean.root}" var="node" id="tree">
-				<p:treeNode id="treeNode">
-					<h:outputText value="#{node}" id="lblNode" />
-				</p:treeNode>
-			</p:tree>
-
-		</h:form>
 	</ui:define>
 </ui:composition>

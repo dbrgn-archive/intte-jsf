@@ -2,10 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://java.sun.com/jsf/core"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:pf="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
@@ -20,12 +19,11 @@
 		rel="stylesheet" />
 	<link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css"
 		rel="stylesheet" />
-	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script
 		src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
 </h:head>
 
-<body style="">
+<h:body>
 
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
@@ -41,12 +39,12 @@
 			<div class="navbar-collapse collapse">
 				<form class="navbar-form navbar-right">
 					<div class="form-group">
-						<h:inputText id="username" styleClass="form-control"
-							pt:placeholder="Username" value="#{userBean.username}" />
+						<p:inputText id="username" styleClass="form-control"
+							value="#{userBean.username}" />
 					</div>
 					<div class="form-group">
 						<h:inputSecret id="password" styleClass="form-control"
-							pt:placeholder="Password" value="#{userBean.username}" />
+							value="#{userBean.username}" />
 					</div>
 					<button type="submit" class="btn btn-success">Sign in</button>
 				</form>
@@ -74,12 +72,5 @@
 	</div>
 	<!-- /container -->
 
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-
-
-
-</body>
+</h:body>
 </html>
