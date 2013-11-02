@@ -1,15 +1,19 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Test</title>
-</h:head>
-<h:body>
-	<h:form id="form">
-		<h:outputText value="Username:" />
-		<h:inputText id="name" value="#{userBean.username}" />
-		<h:inputText id="password" value="#{userBean.password}" />
-		<h:commandButton id="login" value="Login" action="#{userBean.doLogin}" />
-	</h:form>
-</h:body>
-</html>
+<ui:composition template="template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <h:dataTable var="post" value="#{postsBean.posts}" styleClass="table">
+            <h:column id="title">
+                <h:outputText value="#{post.title}"></h:outputText>
+            </h:column>
+            <h:column id="url">
+                <h:outputText value="#{post.url}"></h:outputText>
+            </h:column>
+            <h:column id="user">
+                <h:outputText value="posted by #{post.user.username}"></h:outputText>
+            </h:column>
+        </h:dataTable>
+    </ui:define>
+</ui:composition>

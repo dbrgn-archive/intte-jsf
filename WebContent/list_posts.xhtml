@@ -4,16 +4,30 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="content">
-		<h:dataTable var="post" value="#{postsBean.posts}" styleClass="table">
-			<h:column id="title">
-				<h:outputText value="#{post.title}"></h:outputText>
-			</h:column>
-			<h:column id="url">
-				<h:outputText value="#{post.url}"></h:outputText>
-			</h:column>
-			<h:column id="user">
-				<h:outputText value="posted by #{post.user.username}"></h:outputText>
-			</h:column>
+
+        <div class="row">
+
+		<h:dataTable var="post" value="#{postsBean.posts}" styleClass="table posts">
+
+            <h:column>
+                <div class="voteContainer">
+                    <div class="voteButton up"><span>Upvote</span></div>
+                    <div class="postScore text-center"><span>156</span></div>
+                    <div class="voteButton down"><span>Downvote</span></div>
+                </div>
+                <div class="postContainer">
+                    <h:link styleClass="postLink" outcome="post_detail">
+                        <h2><h:outputText styleClass="postTitle" value="#{post.title}" /></h2>
+                        <div class="postInfo">
+                            <span class="postTime">Submitted 7 hours ago</span> by <h:outputText styleClass="postUser" value="#{post.user.username}" />
+                        </div>
+                        <p class="comments"><span class="glyphicon glyphicon-comment" /> <span>180 Comments</span></p>
+                    </h:link>
+                </div>
+            </h:column>
+
 		</h:dataTable>
+
+        </div>
 	</ui:define>
 </ui:composition>

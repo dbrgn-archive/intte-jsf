@@ -1,0 +1,77 @@
+.voteContainer {
+    float: left;
+    padding: 10px;
+    width: 100px;
+}
+
+.postContainer {
+
+}
+
+.postContainer .postLink {
+    display: block;
+    color: black;
+}
+
+.postContainer .postLink:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.voteContainer .voteButton {
+    height: 40px;
+    background-size: 40px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.voteContainer .voteButton:hover {
+    opacity: 0.7;
+}
+
+.voteContainer .voteButton > span {
+    display: none;
+}
+.voteContainer .up {
+    background-image: url('upvote.png?ln=images');
+}
+
+.voteContainer .down {
+    background-image: url('downvote.png?ln=images');
+}
+
+.commentIconBig {
+    font-size: 40px;
+}
+
+.commentTextarea {
+
+}
+
+.postCommentButton {
+    margin: 10px 0 10px 0;
+    float:right;
+}
+
+.commentsTitle {
+    margin: 80px 0 0 80px;
+}
+
+.addCommentContainer {
+    margin: 80px 0 0 0;
+    padding: 0 0 20px 0;
+    background-color: #ddd;
+}
+
+.comment {
+    clear: both;
+}
+
+.comment > .comment {
+    margin-left: 80px;
+}
+
+.commentTextContainer {
+    padding-top: 20px;
+}
