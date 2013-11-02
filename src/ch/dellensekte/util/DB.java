@@ -51,6 +51,10 @@ public class DB {
 
 	}
 
+	public User getUser(String username) {
+		return users.get(username);
+	}
+
 	public List<Post> getPosts() {
 		Collections.sort(posts);
 		return posts;

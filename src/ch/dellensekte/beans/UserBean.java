@@ -4,6 +4,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import ch.dellensekte.domain.User;
+import ch.dellensekte.util.BeanHelper;
 
 @ManagedBean
 @SessionScoped
@@ -18,6 +19,7 @@ public class UserBean {
 
 	public void setUsername(String username) {
 		this.username = username;
+		System.out.println("username set to " + username);
 	}
 
 	public String getPassword() {
@@ -29,10 +31,24 @@ public class UserBean {
 	}
 
 	public String doLogin() {
-		System.out.println("input was: "+password);
-		if (password.equals("hallo"))
-			return "logged_in.xhtml";
-		return "index.xhtml";
+		this.user = BeanHelper.getDBBean().getUser(this.username);
+		return "template.xhtml";
+	}
+
+	public boolean isLoggedIn() {
+		if (this.user == null)
+			return false;
+		if (this.password.equals(this.user.getPassword())) {
+			return true;
+		}
+		return false;
+	}
+
+	public String doLogout() {
+		this.user = null;
+		this.username = null;
+		this.password = null;
+		return "template.xhtml";
 	}
 
 	public User getUser() {
