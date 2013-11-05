@@ -1,23 +1,31 @@
 <ui:composition template="template.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
     <ui:define name="content">
 
         <div class="row posts">
             <div class="voteContainer">
-                <div class="voteButton up"><span>Upvote</span></div>
-                <div class="postScore text-center"><span>156</span></div>
-                <div class="voteButton down"><span>Downvote</span></div>
-
+                <h:form>
+                    <h:commandLink action="#{postBean.post.voteUp}">
+                        <f:ajax event="action" render="rating" />
+                        <div class="voteButton up"><span>Upvote</span></div>
+                    </h:commandLink>
+                    <div class="postScore text-center"><span><h:outputText id="rating" value="#{postBean.post.rating}" /></span></div>
+                    <h:commandLink action="#{postBean.post.voteDown()}">
+                        <f:ajax event="action" render="rating"/>
+                        <div class="voteButton down"><span>Downvote</span></div>
+                    </h:commandLink>
+                </h:form>
             </div>
             <div class="postContainer">
-                <h2>Post Title</h2>
+                <h2><h:outputText value="#{postBean.post.title}"/></h2>
 
                 <div class="postInfo">
-                    <span class="postTime">Submitted 7 hours ago</span> by PostersName
+                    <span class="postTime">#{postBean.post.durationSinceCreated.value} #{postBean.post.durationSinceCreated.unit} #{i18n.ago} </span> #{i18n.by} <h:outputText styleClass="postUser" value="#{postBean.post.user.username}" />
                 </div>
-                <p class="comments"><span class="glyphicon glyphicon-comment"/> <span>180 Comments</span></p>
+                <p class="comments"><span class="glyphicon glyphicon-comment" /> <span>#{postBean.post.commentCount} #{i18n.comment}</span></p>
 
             </div>
         </div>
@@ -25,7 +33,7 @@
 
         <div class="row addCommentContainer">
             <div class="col-md-12">
-                <h2>180 Comments</h2>
+                <h2>#{postBean.post.commentCount} #{i18n.comment}</h2>
                 <div class="row">
                     <div class="col-md-1">
                         <span class="glyphicon glyphicon-comment commentIconBig"/>

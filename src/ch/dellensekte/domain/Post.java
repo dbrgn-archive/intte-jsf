@@ -29,7 +29,7 @@ public class Post extends Entry {
 
 	@Override
 	public int compareTo(Entry o) {
-		return this.getTimestamp().compareTo(o.getTimestamp());
+		return new Integer(this.getRating()).compareTo(new Integer(this.getRating()));
 	}
 
 	@Override

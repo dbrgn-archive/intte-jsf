@@ -37,15 +37,16 @@ public abstract class Entry implements Comparable<Entry> {
 	}
 
 	public void voteUp() {
-		++this.upVotes;
-	}
+        ++this.upVotes;
+    }
 
 	public void voteDown() {
 		++this.downVotes;
 	}
 
 	public int getRating() {
-		return this.upVotes / (this.upVotes + this.downVotes);
+		//return this.upVotes / (this.upVotes + this.downVotes);
+        return this.upVotes - this.downVotes;
 	}
 
 	public Duration getDurationSinceCreated() {
@@ -64,4 +65,8 @@ public abstract class Entry implements Comparable<Entry> {
 	public void addComment(Comment c) {
 		this.comments.add(c);
 	}
+
+    public int getCommentCount() {
+        return comments.size();
+    }
 }

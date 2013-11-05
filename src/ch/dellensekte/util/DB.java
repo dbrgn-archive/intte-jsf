@@ -27,13 +27,10 @@ public class DB {
 		users.put("chrigi", chrigi);
 
 		// Create posts
-		Post p1 = new Post("http://www.google.ch", "G00gle's new website", 0,
-				0, danilo);
+		Post p1 = new Post("http://www.google.ch", "G00gle's new website", 10, 1, danilo);
 		Post p2 = new Post("http://www.hsr.ch", "HSR Gadgothek", 10, 3, jonas);
-		Post p3 = new Post("http://www.namics.ch", "Namics Headbang", 20, 2,
-				jonas);
-		Post p4 = new Post("http://www.sbb.ch", "Fahrplanwechsel", 3, 10,
-				chrigi);
+		Post p3 = new Post("http://www.namics.ch", "Namics Headbang", 20, 2,jonas);
+		Post p4 = new Post("http://www.sbb.ch", "Fahrplanwechsel", 3, 10, chrigi);
 
 		posts.add(p1);
 		posts.add(p2);
@@ -44,6 +41,7 @@ public class DB {
 		Comment c1 = new Comment("Sehr guter Post", 0, 0, danilo);
 		Comment c2 = new Comment("Sehr sinnvoller Kommentar", 0, 0, jonas);
 		Comment c3 = new Comment("finde ich auch", 0, 0, jonas);
+
 		c1.addComment(c2);
 		c2.voteUp();
 		c2.addComment(c3);
