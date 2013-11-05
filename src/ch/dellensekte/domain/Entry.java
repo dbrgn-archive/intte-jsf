@@ -69,4 +69,9 @@ public abstract class Entry implements Comparable<Entry> {
     public int getCommentCount() {
         return comments.size();
     }
+
+    @Override
+    public int compareTo(Entry o) {
+        return new Integer(this.getRating()).compareTo(new Integer(this.getRating()));
+    }
 }

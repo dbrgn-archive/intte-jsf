@@ -28,11 +28,6 @@ public class Post extends Entry {
 	}
 
 	@Override
-	public int compareTo(Entry o) {
-		return new Integer(this.getRating()).compareTo(new Integer(this.getRating()));
-	}
-
-	@Override
 	public String toString() {
 		return this.title + " " + this.url + " created by "
 				+ this.user.getUsername() + " "

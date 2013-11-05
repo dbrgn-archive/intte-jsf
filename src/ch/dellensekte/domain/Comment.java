@@ -26,12 +26,4 @@ public class Comment extends Entry{
 		this.user = user;
 	}
 
-
-	@Override
-	public int compareTo(Entry o) {
-		return this.getTimestamp().compareTo(o.getTimestamp());
-	}
-	
-
-
 }
