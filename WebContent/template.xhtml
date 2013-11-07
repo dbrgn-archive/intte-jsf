@@ -2,24 +2,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <link rel="shortcut icon" href="http://getbootstrap.com/docs-assets/ico/favicon.png"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<link rel="shortcut icon"
+		href="http://getbootstrap.com/docs-assets/ico/favicon.png" />
 
-    <title>Reddit-Clone</title>
-    <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet"/>
-    <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet"/>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js" type="text/javascript"></script>
+	<title>Reddit-Clone</title>
+	<link href="http://getbootstrap.com/dist/css/bootstrap.css"
+		rel="stylesheet" />
+	<link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css"
+		rel="stylesheet" />
+	<script
+		src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"
+		type="text/javascript"></script>
 
-    <h:outputStylesheet library="css" name="styles.css"/>
-    <h:outputStylesheet library="css" name="reddit-clone.css" />
+	<h:outputStylesheet library="css" name="styles.css" />
+	<h:outputStylesheet library="css" name="reddit-clone.css" />
 </h:head>
 
 <h:body>
@@ -46,8 +51,11 @@
 							<h:inputSecret id="password" styleClass="form-control"
 								value="#{userBean.password}" />
 						</div>
-						<h:commandButton styleClass="btn btn-success"
-							action="#{userBean.doLogin}" value="#{i18n['login']}"></h:commandButton>
+						<div class="form-group">
+							<h:outputLink styleClass="btn btn-primary" value="register.xhtml">#{i18n['signup']}</h:outputLink>
+							<h:commandButton styleClass="btn btn-success"
+								action="#{userBean.doLogin}" value="#{i18n['login']}"></h:commandButton>
+						</div>
 					</h:panelGroup>
 					<!-- / Login Container -->
 					<!--  Loggedin Container -->
@@ -79,7 +87,7 @@
 				website. It includes a large callout called a jumbotron and three
 				supporting pieces of content. Use it as a starting point to create
 				something more unique.</p>
-				<p>Login: chrigi Password: foobar</p>
+			<p>Login: chrigi Password: foobar</p>
 			<h:outputText value="Logged in: #{userBean.loggedIn}"></h:outputText>
 
 			<p>
@@ -88,9 +96,9 @@
 		</div>
 	</div>
 
-    <div class="container">
-        <ui:insert name="content"></ui:insert>
-    </div>
+	<div class="container">
+		<ui:insert name="content"></ui:insert>
+	</div>
 
 </h:body>
 </html>
