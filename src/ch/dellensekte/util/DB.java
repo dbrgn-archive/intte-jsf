@@ -13,7 +13,7 @@ import ch.dellensekte.domain.User;
 public class DB {
 
 	List<Post> posts = new LinkedList<Post>();
-	Map<String, User> users = new HashMap<String, User>();
+	public Map<String, User> users = new HashMap<String, User>();
 
 	public DB() {
 
@@ -27,13 +27,10 @@ public class DB {
 		users.put("chrigi", chrigi);
 
 		// Create posts
-		Post p1 = new Post("http://www.google.ch", "G00gle's new website", 0,
-				0, danilo);
+		Post p1 = new Post("http://www.google.ch", "G00gle's new website", 0, 0, danilo);
 		Post p2 = new Post("http://www.hsr.ch", "HSR Gadgothek", 10, 3, jonas);
-		Post p3 = new Post("http://www.namics.ch", "Namics Headbang", 20, 2,
-				jonas);
-		Post p4 = new Post("http://www.sbb.ch", "Fahrplanwechsel", 3, 10,
-				chrigi);
+		Post p3 = new Post("http://www.namics.ch", "Namics Headbang", 20, 2, jonas);
+		Post p4 = new Post("http://www.sbb.ch", "Fahrplanwechsel", 3, 10, chrigi);
 
 		posts.add(p1);
 		posts.add(p2);
@@ -58,6 +55,11 @@ public class DB {
 	public List<Post> getPosts() {
 		Collections.sort(posts);
 		return posts;
+	}
+
+	public void registerNewUser(String username, String password) {
+		User newUser = new User(username, password);
+		this.users.put(username, newUser);
 	}
 
 }
