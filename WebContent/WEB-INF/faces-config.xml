@@ -12,4 +12,11 @@
 			<var>i18n</var>
 		</resource-bundle>
 	</application>
+
+    <managed-bean>
+        <managed-bean-name>commentBean</managed-bean-name>
+        <managed-bean-class>ch.dellensekte.beans.CommentBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
 </faces-config>

@@ -7,6 +7,7 @@ import java.util.List;
 public abstract class Entry implements Comparable<Entry> {
 
 	protected List<Comment> comments = new LinkedList<Comment>();
+    protected List<Comment> commentsFlat = new LinkedList<Comment>();
 	protected int upVotes;
 	protected int downVotes;
 	protected GregorianCalendar timestamp;
@@ -30,10 +31,6 @@ public abstract class Entry implements Comparable<Entry> {
 
 	public GregorianCalendar getTimestamp() {
 		return this.timestamp;
-	}
-
-	public int getVoteCount() {
-		return this.upVotes + this.downVotes;
 	}
 
 	public void voteUp() {
@@ -64,14 +61,52 @@ public abstract class Entry implements Comparable<Entry> {
 
 	public void addComment(Comment c) {
 		this.comments.add(c);
-	}
+        this.commentsFlat = new LinkedList<>();
+        createFlatList(this.comments, 0);
+    }
 
-    public int getCommentCount() {
-        return comments.size();
+    public boolean hasComments() {
+        return !comments.isEmpty();
+    }
+
+    public int getDeepCommentCount() {
+        return countComments(comments);
+    }
+
+    private int countComments(List<Comment> commentList) {
+        int childCount = 0;
+        for(Comment comment : commentList)  {
+
+            if(comment.hasComments()) {
+                childCount += countComments(comment.getComments());
+            }
+        }
+        return commentList.size() + childCount;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
     }
 
     @Override
     public int compareTo(Entry o) {
-        return new Integer(this.getRating()).compareTo(new Integer(this.getRating()));
+        return new Integer(this.getRating()).compareTo(this.getRating());
     }
+
+    public List<Comment> getCommentsFlat() {
+        this.commentsFlat = new LinkedList<>();
+        createFlatList(this.comments, 0);
+        return this.commentsFlat;
+    }
+
+    protected void createFlatList(List<Comment> commentList, int parentLevel) {
+        for(Comment comment : commentList) {
+            comment.setLevel(parentLevel + 1);
+            commentsFlat.add(comment);
+            if(comment.hasComments()) {
+                createFlatList(comment.getComments(), parentLevel + 1);
+            }
+        }
+    }
+
 }

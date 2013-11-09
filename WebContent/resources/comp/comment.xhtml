@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+        >
+
+<composite:interface>
+    <composite:attribute name="commentList"/>
+</composite:interface>
+
+<composite:implementation>
+    <ui:repeat var="comment" value="${cc.attrs.commentList}">
+
+        <div class="comment level-#{comment.level}">
+            <h:form>
+                <div class="voteContainer">
+                    <h:commandLink action="#{comment.voteUp}">
+                        <f:ajax event="action" render="rating"/>
+                        <div class="voteButton up"><span>upvote</span></div>
+                    </h:commandLink>
+
+                    <div class="postScore text-center"><span><h:outputText id="rating" value="#{comment.rating}"/></span></div>
+
+                    <h:commandLink action="#{comment.voteDown}">
+                        <f:ajax event="action" render="rating"/>
+                        <div class="voteButton down"><span>downvote</span></div>
+                    </h:commandLink>
+                </div>
+            </h:form>
+                <div class="commentTextContainer">
+                    <p>
+                        <span>#{comment.user.username}</span>
+                        <span>#{comment.durationSinceCreated.value} #{comment.durationSinceCreated.unit} #{i18n.ago}</span>
+                    </p>
+                    <p>#{comment.comment}</p>
+                </div>
+
+            <h:form>
+                <div class="replyContainer">
+                    <h:inputTextarea  value="#{commentBean.commentText}"
+                                     required="true"
+                                     styleClass="commentTextarea form-control">
+                    </h:inputTextarea>
+
+                    <h:commandButton value="Reply" action="#{commentBean.addComment(comment)}"
+                                     styleClass="btn btn-primary postCommentButton">
+                    </h:commandButton>
+                </div>
+            </h:form>
+        </div>
+
+    </ui:repeat>
+</composite:implementation>
+</html>

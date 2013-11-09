@@ -3,6 +3,7 @@ package ch.dellensekte.domain;
 public class Comment extends Entry{
 	private String comment;
 	private User user;
+    private int level;
 
 	public Comment(String comment, int upVotes, int downVotes, User user) {
 		super(upVotes, downVotes, user);
@@ -26,4 +27,11 @@ public class Comment extends Entry{
 		this.user = user;
 	}
 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
 }

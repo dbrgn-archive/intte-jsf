@@ -64,12 +64,42 @@
     background-color: #ddd;
 }
 
+.replyContainer {
+    padding: 10px;
+    margin-left: 90px;
+}
+
+.post,
 .comment {
     clear: both;
+    border-top: 1px solid #ddd;
+    padding-bottom: 50px;
 }
 
 .comment > .comment {
     margin-left: 80px;
+}
+
+.comment.level-1 {
+    margin-left: 0px;
+}
+.comment.level-2 {
+    margin-left: 80px;
+}
+.comment.level-3 {
+    margin-left: 160px;
+}
+.comment.level-4 {
+    margin-left: 240px;
+}
+.comment.level-5 {
+    margin-left: 320px;
+}
+.comment.level-6 {
+    margin-left: 400px;
+}
+.comment.level-7 {
+    margin-left: 480px;
 }
 
 .commentTextContainer {

@@ -2,9 +2,7 @@ package ch.dellensekte.beans;
 
 import ch.dellensekte.domain.Post;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
@@ -19,6 +17,6 @@ public class PostBean {
 
     public String setPost(Post post) {
         this.post = post;
-        return "post_detail";
+        return "post_detail?faces-redirect=true";
     }
 }

@@ -2,133 +2,75 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core">
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:cust="http://java.sun.com/jsf/composite/comp"
+        >
     <ui:define name="content">
+        <!-- ***** POST ***** -->
 
         <div class="row posts">
-            <div class="voteContainer">
-                <h:form>
+            <h:form>
+                <div class="voteContainer">
                     <h:commandLink action="#{postBean.post.voteUp}">
-                        <f:ajax event="action" render="rating" />
-                        <div class="voteButton up"><span>Upvote</span></div>
-                    </h:commandLink>
-                    <div class="postScore text-center"><span><h:outputText id="rating" value="#{postBean.post.rating}" /></span></div>
-                    <h:commandLink action="#{postBean.post.voteDown()}">
                         <f:ajax event="action" render="rating"/>
-                        <div class="voteButton down"><span>Downvote</span></div>
+
+                        <div class="voteButton up"><span>upvote</span></div>
                     </h:commandLink>
-                </h:form>
-            </div>
-            <div class="postContainer">
-                <h2><h:outputText value="#{postBean.post.title}"/></h2>
 
-                <div class="postInfo">
-                    <span class="postTime">#{postBean.post.durationSinceCreated.value} #{postBean.post.durationSinceCreated.unit} #{i18n.ago} </span> #{i18n.by} <h:outputText styleClass="postUser" value="#{postBean.post.user.username}" />
+                    <div class="postScore text-center"><span><h:outputText id="rating" value="#{postBean.post.rating}"/></span>
+                    </div>
+                    <h:commandLink action="#{postBean.post.voteDown}">
+                        <f:ajax event="action" render="rating"/>
+
+                        <div class="voteButton down"><span>downvote</span></div>
+                    </h:commandLink>
                 </div>
-                <p class="comments"><span class="glyphicon glyphicon-comment" /> <span>#{postBean.post.commentCount} #{i18n.comment}</span></p>
+                <div class="postContainer">
+                    <h2>#{postBean.post.title}</h2>
 
-            </div>
+                    <p class="postUrl">
+                        <a href="#{postBean.post.url}">#{postBean.post.url}</a>
+                    </p>
+
+                    <div class="postInfo">
+                        <span class="postTime">#{postBean.post.durationSinceCreated.value} #{postBean.post.durationSinceCreated.unit} #{i18n.ago} </span>
+                        #{i18n.by} <span class="postUser">#{postBean.post.user.username}</span>
+                    </div>
+                    <p class="comments">
+                        <span class="glyphicon glyphicon-comment"/> <span><h:outputText id="commentCount"
+                                                                                        value="#{postBean.post.deepCommentCount}"/> #{i18n.comment}</span>
+                    </p>
+                </div>
+            </h:form>
         </div>
 
 
+        <!-- ***** ADD COMMENT ***** -->
         <div class="row addCommentContainer">
-            <div class="col-md-12">
-                <h2>#{postBean.post.commentCount} #{i18n.comment}</h2>
-                <div class="row">
-                    <div class="col-md-1">
-                        <span class="glyphicon glyphicon-comment commentIconBig"/>
-                    </div>
-                    <div class="col-md-6">
-                       <h:inputTextarea styleClass="commentTextarea form-control">
-
-                       </h:inputTextarea>
-
-                        <h:commandButton value="Post Comment" styleClass="btn btn-primary postCommentButton"></h:commandButton>
+            <h:form>
+                <div class="col-md-12">
+                    <h2>#{postBean.post.deepCommentCount} #{i18n.comment}</h2>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span class="glyphicon glyphicon-comment commentIconBig"/>
+                        </div>
+                        <div class="col-md-6">
+                            <h:inputTextarea id="commentInput" value="#{commentBean.commentText}"
+                                             required="true"
+                                             styleClass="commentTextarea form-control"/>
+                            <h:commandButton value="#{i18n.postComment}"
+                                             actionListener="#{commentBean.addComment(postBean)}"
+                                             styleClass="btn btn-primary postCommentButton"/>
+                        </div>
                     </div>
                 </div>
-
-            </div>
+            </h:form>
         </div>
 
+
+        <!-- ***** COMMENT LIST ***** -->
         <div class="row commentsList">
-
-            <div class="comment">
-                <div class="voteContainer">
-                    <div class="voteButton up"><span>Upvote</span></div>
-                    <div class="postScore text-center"><span>156</span></div>
-                    <div class="voteButton down"><span>Downvote</span></div>
-
-                </div>
-                <div class="commentTextContainer">
-                    <p><span>PostersName</span> <span>3h ago</span></p>
-                    <p>Hilarious Comment</p>
-                    <h:commandLink action="reply.xhtml" styleClass="btn btn-default btn-sm replyButton">
-                        <span class="glyphicon glyphicon-comment"/> Reply
-                    </h:commandLink>
-                </div>
-            </div>
-
-            <div class="comment">
-                <div class="voteContainer">
-                    <div class="voteButton up"><span>Upvote</span></div>
-                    <div class="postScore text-center"><span>156</span></div>
-                    <div class="voteButton down"><span>Downvote</span></div>
-
-                </div>
-                <div class="commentTextContainer">
-                    <p><span>PostersName</span> <span>3h ago</span></p>
-                    <p>Hilarious Comment</p>
-                    <h:commandButton value="Reply" styleClass="btn btn-default btn-sm replyButton"></h:commandButton>
-                </div>
-            </div>
-
-            <div class="comment">
-                <div class="voteContainer">
-                    <div class="voteButton up"><span>Upvote</span></div>
-                    <div class="postScore text-center"><span>156</span></div>
-                    <div class="voteButton down"><span>Downvote</span></div>
-
-                </div>
-                <div class="commentTextContainer">
-                    <p><span>PostersName</span> <span>3h ago</span></p>
-                    <p>Hilarious Comment</p>
-                    <h:commandButton value="Reply" styleClass="btn btn-default btn-sm replyButton"></h:commandButton>
-                </div>
-
-                <div class="comment">
-                    <div class="voteContainer">
-                        <div class="voteButton up"><span>Upvote</span></div>
-                        <div class="postScore text-center"><span>156</span></div>
-                        <div class="voteButton down"><span>Downvote</span></div>
-
-                    </div>
-                    <div class="commentTextContainer">
-                        <p><span>PostersName</span> <span>3h ago</span></p>
-                        <p>Hilarious Comment</p>
-                        <h:commandLink action="reply.xhtml" styleClass="btn btn-default btn-sm replyButton">
-                            <span class="glyphicon glyphicon-comment"/> Reply
-                        </h:commandLink>
-                    </div>
-
-                    <div class="comment">
-                        <div class="voteContainer">
-                            <div class="voteButton up"><span>Upvote</span></div>
-                            <div class="postScore text-center"><span>156</span></div>
-                            <div class="voteButton down"><span>Downvote</span></div>
-
-                        </div>
-                        <div class="commentTextContainer">
-                            <p><span>PostersName</span> <span>3h ago</span></p>
-                            <p>Hilarious Comment</p>
-                            <h:commandLink action="reply.xhtml" styleClass="btn btn-default btn-sm replyButton">
-                                <span class="glyphicon glyphicon-comment"/> Reply
-                            </h:commandLink>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
+            <cust:comment commentList="#{postBean.post.commentsFlat}"/>
         </div>
 
     </ui:define>
