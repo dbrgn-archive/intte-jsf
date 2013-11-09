@@ -30,9 +30,8 @@ public class UserBean {
 		this.password = password;
 	}
 
-	public String doLogin() {
+	public void doLogin() {
 		this.user = BeanHelper.getDBBean().getUser(this.username);
-		return "template.xhtml";
 	}
 
 	public boolean isLoggedIn() {
