@@ -35,8 +35,8 @@
             </h:form>
                 <div class="commentTextContainer">
                     <p>
-                        <span>#{comment.user.username}</span>
-                        <span>#{comment.durationSinceCreated.value} #{comment.durationSinceCreated.unit} #{i18n.ago}</span>
+                        <span>#{comment.durationSinceCreated.value} #{i18n[comment.durationSinceCreated.unit]} #{i18n.ago},</span>
+                        <span>#{comment.user.username} #{i18n.said}:</span>
                     </p>
                     <p>#{comment.comment}</p>
                 </div>
