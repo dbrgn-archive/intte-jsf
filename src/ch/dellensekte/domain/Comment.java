@@ -2,7 +2,6 @@ package ch.dellensekte.domain;
 
 public class Comment extends Entry{
 	private String comment;
-	private User user;
     private int level;
 
 	public Comment(String comment, int upVotes, int downVotes, User user) {
