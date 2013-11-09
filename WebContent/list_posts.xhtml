@@ -3,6 +3,7 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:cust="http://java.sun.com/jsf/composite/comp"
         >
     <ui:define name="content">
 
@@ -12,23 +13,13 @@
 
                 <div class="post">
                     <h:form>
-                        <div class="voteContainer">
-                            <h:commandLink action="#{post.voteUp}">
-                                <f:ajax event="action" render="rating"/>
-                                <div class="voteButton up"><span>upvote</span></div>
-                            </h:commandLink>
-                            <div class="postScore text-center"><span><h:outputText id="rating" value="#{post.rating}"/></span></div>
-                            <h:commandLink action="#{post.voteDown}">
-                                <f:ajax event="action" render="rating"/>
-                                <div class="voteButton down"><span>downvote</span></div>
-                            </h:commandLink>
-                        </div>
+                        <cust:vote post="#{post}" />
                         <div class="postContainer">
                             <h:commandLink styleClass="postLink" action="#{postBean.setPost(post)}">
                                 <h2 class="postTitle">#{post.title}</h2>
 
                                 <div class="postInfo">
-                                    <span class="postTime">#{post.durationSinceCreated.value} #{post.durationSinceCreated.unit} #{i18n.ago} </span> #{i18n.by}
+                                    <span class="postTime">#{post.durationSinceCreated.value} #{i18n[post.durationSinceCreated.unit]} #{i18n.ago} </span> #{i18n.by}
                                     <span class="postUser">#{post.user.username}</span>
                                 </div>
                                 <p class="comments"><span class="glyphicon glyphicon-comment"/>

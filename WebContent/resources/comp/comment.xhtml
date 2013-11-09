@@ -9,6 +9,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:cust="http://java.sun.com/jsf/composite/comp"
         >
 
 <composite:interface>
@@ -20,19 +21,7 @@
 
         <div class="comment level-#{comment.level}">
             <h:form>
-                <div class="voteContainer">
-                    <h:commandLink action="#{comment.voteUp}">
-                        <f:ajax event="action" render="rating"/>
-                        <div class="voteButton up"><span>upvote</span></div>
-                    </h:commandLink>
-
-                    <div class="postScore text-center"><span><h:outputText id="rating" value="#{comment.rating}"/></span></div>
-
-                    <h:commandLink action="#{comment.voteDown}">
-                        <f:ajax event="action" render="rating"/>
-                        <div class="voteButton down"><span>downvote</span></div>
-                    </h:commandLink>
-                </div>
+                <cust:vote post="#{comment}" />
             </h:form>
                 <div class="commentTextContainer">
                     <p>

@@ -3,6 +3,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
                 xmlns:cust="http://java.sun.com/jsf/composite/comp"
         >
     <ui:define name="content">
@@ -10,21 +11,8 @@
         <!-- ***** POST ***** -->
         <div class="row posts">
             <h:form>
-                <div class="voteContainer">
-                    <h:commandLink action="#{postBean.post.voteUp}">
-                        <f:ajax event="action" render="rating"/>
+                <cust:vote post="#{postBean.post}" />
 
-                        <div class="voteButton up"><span>upvote</span></div>
-                    </h:commandLink>
-
-                    <div class="postScore text-center"><span><h:outputText id="rating" value="#{postBean.post.rating}"/></span>
-                    </div>
-                    <h:commandLink action="#{postBean.post.voteDown}">
-                        <f:ajax event="action" render="rating"/>
-
-                        <div class="voteButton down"><span>downvote</span></div>
-                    </h:commandLink>
-                </div>
                 <div class="postContainer">
                     <h2>#{postBean.post.title}</h2>
 
@@ -33,7 +21,7 @@
                     </p>
 
                     <div class="postInfo">
-                        <span class="postTime">#{postBean.post.durationSinceCreated.value} #{postBean.post.durationSinceCreated.unit} #{i18n.ago} </span>
+                        <span class="postTime">#{postBean.post.durationSinceCreated.value} #{i18n[postBean.post.durationSinceCreated.unit]} #{i18n.ago} </span>
                         #{i18n.by} <span class="postUser">#{postBean.post.user.username}</span>
                     </div>
                     <p class="comments">
