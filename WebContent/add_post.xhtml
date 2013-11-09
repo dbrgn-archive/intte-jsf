@@ -1,0 +1,64 @@
+<ui:composition template="template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+        >
+    <ui:define name="content">
+
+        <div class="row addPostContainer">
+            <div class="col-md-1">
+                <span class="glyphicon glyphicon-cloud cloudIconBig"/>
+            </div>
+            <div class="col-md-4">
+                <h1>#{i18n.submitLink}</h1>
+                <p>#{i18n.submitLinkSubtitle}</p>
+            </div>
+            <div class="col-md-6 addPostForm">
+
+                <h:form styleClass="form-horizontal" id="form">
+
+                    <!-- title row -->
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <p:inputText id="title" styleClass="form-control" value="#{newPostBean.title}" required="true" requiredMessage="#{i18n.titleEmpty}">
+                                <p:watermark value="#{i18n.postTitle}" for="title"/>
+                            </p:inputText>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <p:message for="title"/>
+                        </div>
+                    </div>
+
+                    <!-- URL row -->
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <p:inputText id="URL" styleClass="form-control" value="#{newPostBean.url}">
+                                <f:validator validatorId="ch.dellensekte.validators.URLValidator"/>
+                                <p:watermark value="#{i18n.postURL}" for="URL"/>
+                            </p:inputText>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <p:message for="URL"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <h:commandButton styleClass="btn btn-primary" action="#{newPostBean.submit}" value="#{i18n.submit}" />
+                        </div>
+                    </div>
+
+                </h:form>
+            </div>
+        </div>
+
+    </ui:define>
+</ui:composition>

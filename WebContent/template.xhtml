@@ -32,7 +32,7 @@
 					class="icon-bar" />
 				<!-- </button>-->
                 <h:link styleClass="navbar-brand" outcome="list_posts" value="#{i18n.postList}" />
-
+                <h:link rendered="#{userBean.loggedIn}" styleClass="navbar-brand" outcome="add_post" value="#{i18n.addPost}" />
 			</div>
 			<div class="navbar-collapse collapse">
 				<h:form class="navbar-form navbar-right">

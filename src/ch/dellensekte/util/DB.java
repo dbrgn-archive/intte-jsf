@@ -67,4 +67,8 @@ public class DB {
 		this.users.put(username, newUser);
 	}
 
+    public void addPost(Post post) {
+        this.posts.add(post);
+    }
+
 }

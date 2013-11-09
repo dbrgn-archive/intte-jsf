@@ -110,3 +110,12 @@
 .commentTextContainer {
     padding-top: 20px;
 }
+
+.addPostForm {
+    padding-top: 10px;
+}
+
+.cloudIconBig {
+    font-size: 60px;
+    padding-top: 6px;
+}
