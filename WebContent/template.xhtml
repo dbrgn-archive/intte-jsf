@@ -31,8 +31,8 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 				<!-- </button>-->
-				<a class="navbar-brand"
-					href="./Jumbotron Template for Bootstrap_files/Jumbotron Template for Bootstrap.htm">Reddit-Clone</a>
+                <h:link styleClass="navbar-brand" outcome="list_posts" value="#{i18n.postList}" />
+
 			</div>
 			<div class="navbar-collapse collapse">
 				<h:form class="navbar-form navbar-right">
@@ -40,11 +40,15 @@
 					<h:panelGroup rendered="#{!userBean.loggedIn}">
 						<div class="form-group">
 							<p:inputText id="username" styleClass="form-control"
-								value="#{userBean.username}" />
+								value="#{userBean.username}" >
+                                <p:watermark for="username" value="#{i18n.username}" />
+							</p:inputText>
 						</div>
 						<div class="form-group">
 							<h:inputSecret id="password" styleClass="form-control"
-								value="#{userBean.password}" />
+								value="#{userBean.password}" >
+                                <p:watermark for="password" value="#{i18n.password}" />
+                            </h:inputSecret>
 						</div>
 						<div class="form-group">
 							<h:outputLink styleClass="btn btn-primary" value="register.xhtml">#{i18n['signup']}</h:outputLink>
