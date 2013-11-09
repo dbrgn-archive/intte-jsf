@@ -4,9 +4,12 @@ import ch.dellensekte.domain.Comment;
 import ch.dellensekte.domain.User;
 import ch.dellensekte.util.BeanHelper;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
-// managed bean, configured in faces-config.xml
-// annotations don't work on this bean, don't know why
+
+@ManagedBean
+@RequestScoped
 public class CommentBean {
 
     private Comment comment;
