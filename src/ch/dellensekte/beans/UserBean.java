@@ -31,7 +31,7 @@ public class UserBean {
 	}
 
 	public void doLogin() {
-		this.user = BeanHelper.getDBBean().getUser(this.username);
+		this.user = BeanHelper.getDBBean().getUser(this.username.toLowerCase());
 	}
 
 	public boolean isLoggedIn() {
@@ -43,11 +43,10 @@ public class UserBean {
 		return false;
 	}
 
-	public String doLogout() {
+	public void doLogout() {
 		this.user = null;
 		this.username = null;
 		this.password = null;
-		return "template.xhtml";
 	}
 
 	public User getUser() {

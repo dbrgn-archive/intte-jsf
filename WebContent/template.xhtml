@@ -81,13 +81,13 @@
 				#{i18n[pageDescriptionBean.titleKey]}
 			</h1>
 			<p>
-			    #{i18n[pageDescriptionBean.descKey]}
+			    <h:outputText value="#{i18n[pageDescriptionBean.descKey]}" escape="false" />
 			</p>
 		</div>
 	</div>
 
 	<div class="container">
-		<ui:insert name="content"></ui:insert>
+		<ui:insert name="content" />
 	</div>
 
 </h:body>
