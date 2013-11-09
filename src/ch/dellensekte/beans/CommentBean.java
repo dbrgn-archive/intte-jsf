@@ -11,6 +11,7 @@ public class CommentBean {
 
     private Comment comment;
     private String commentText;
+    private boolean visible = false;
 
     public Comment getComment() {
         return comment;
@@ -45,5 +46,17 @@ public class CommentBean {
         DBBean db = BeanHelper.getDBBean();
         User u = db.getUser("chrigi");
         this.comment = new Comment(this.commentText, 0, 0, u);
+    }
+
+    public void makeReplyVisible() {
+        this.visible = true;
+    }
+
+    public boolean isVisible() {
+        return this.visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 }

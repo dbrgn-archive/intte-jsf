@@ -8,6 +8,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
         >
 
 <composite:interface>
@@ -41,18 +42,30 @@
                     <p>#{comment.comment}</p>
                 </div>
 
-            <h:form>
-                <div class="replyContainer">
-                    <h:inputTextarea  value="#{commentBean.commentText}"
-                                     required="true"
-                                     styleClass="commentTextarea form-control">
-                    </h:inputTextarea>
+            <h:panelGroup rendered="#{userBean.loggedIn}">
+                <h:form>
+                    <h:commandLink action="#{commentBean.makeReplyVisible}">
+                        <f:ajax event="action" render="replyform"/>
+                        <span class="glyphicon glyphicon-comment"/> #{i18n.reply}
+                    </h:commandLink>
 
-                    <h:commandButton value="#{i18n.reply}" action="#{commentBean.addComment(comment)}"
-                                     styleClass="btn btn-primary postCommentButton">
-                    </h:commandButton>
-                </div>
-            </h:form>
+
+                    <h:panelGroup id="replyform">
+                        <h:panelGroup styleClass="#{commentBean.visible ? '' : 'hidden'}">
+                        <div class="replyContainer col-md-6 ">
+                            <h:inputTextarea  value="#{commentBean.commentText}"
+                                             required="true"
+                                             styleClass="commentTextarea form-control">
+                            </h:inputTextarea>
+
+                            <h:commandButton value="#{i18n.reply}" action="#{commentBean.addComment(comment)}"
+                                             styleClass="btn btn-primary postCommentButton">
+                            </h:commandButton>
+                        </div>
+                        </h:panelGroup>
+                    </h:panelGroup>
+                </h:form>
+            </h:panelGroup>
         </div>
 
     </ui:repeat>

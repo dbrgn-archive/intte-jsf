@@ -6,8 +6,8 @@
                 xmlns:cust="http://java.sun.com/jsf/composite/comp"
         >
     <ui:define name="content">
-        <!-- ***** POST ***** -->
 
+        <!-- ***** POST ***** -->
         <div class="row posts">
             <h:form>
                 <div class="voteContainer">
@@ -44,29 +44,29 @@
             </h:form>
         </div>
 
-
         <!-- ***** ADD COMMENT ***** -->
         <div class="row addCommentContainer">
             <h:form>
                 <div class="col-md-12">
                     <h2>#{postBean.post.deepCommentCount} #{i18n.comment}</h2>
-                    <div class="row">
-                        <div class="col-md-1">
-                            <span class="glyphicon glyphicon-comment commentIconBig"/>
+                    <h:panelGroup rendered="#{userBean.loggedIn}">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="glyphicon glyphicon-comment commentIconBig"/>
+                            </div>
+                            <div class="col-md-6">
+                                <h:inputTextarea id="commentInput" value="#{commentBean.commentText}"
+                                                 required="true"
+                                                 styleClass="commentTextarea form-control"/>
+                                <h:commandButton value="#{i18n.postComment}"
+                                                 actionListener="#{commentBean.addComment(postBean)}"
+                                                 styleClass="btn btn-primary postCommentButton"/>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <h:inputTextarea id="commentInput" value="#{commentBean.commentText}"
-                                             required="true"
-                                             styleClass="commentTextarea form-control"/>
-                            <h:commandButton value="#{i18n.postComment}"
-                                             actionListener="#{commentBean.addComment(postBean)}"
-                                             styleClass="btn btn-primary postCommentButton"/>
-                        </div>
-                    </div>
+                    </h:panelGroup>
                 </div>
             </h:form>
         </div>
-
 
         <!-- ***** COMMENT LIST ***** -->
         <div class="row commentsList">
