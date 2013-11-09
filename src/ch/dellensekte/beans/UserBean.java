@@ -6,7 +6,7 @@ import javax.faces.bean.SessionScoped;
 import ch.dellensekte.domain.User;
 import ch.dellensekte.util.BeanHelper;
 
-@ManagedBean
+@ManagedBean(eager = true)
 @SessionScoped
 public class UserBean {
 	public User user;

@@ -46,8 +46,11 @@
 							<h:inputSecret id="password" styleClass="form-control"
 								value="#{userBean.password}" />
 						</div>
-						<h:commandButton styleClass="btn btn-success"
-							action="#{userBean.doLogin}" value="#{i18n['login']}"/>
+						<div class="form-group">
+							<h:outputLink styleClass="btn btn-primary" value="register.xhtml">#{i18n['signup']}</h:outputLink>
+							<h:commandButton styleClass="btn btn-success"
+								action="#{userBean.doLogin}" value="#{i18n['login']}"></h:commandButton>
+						</div>
 					</h:panelGroup>
 					<!-- / Login Container -->
 					<!--  Loggedin Container -->
@@ -79,7 +82,7 @@
 				website. It includes a large callout called a jumbotron and three
 				supporting pieces of content. Use it as a starting point to create
 				something more unique.</p>
-				<p>Login: chrigi Password: foobar</p>
+			<p>Login: chrigi Password: foobar</p>
 			<h:outputText value="Logged in: #{userBean.loggedIn}"></h:outputText>
 
 			<p>
@@ -88,9 +91,9 @@
 		</div>
 	</div>
 
-    <div class="container">
-        <ui:insert name="content"></ui:insert>
-    </div>
+	<div class="container">
+		<ui:insert name="content"></ui:insert>
+	</div>
 
 </h:body>
 </html>
