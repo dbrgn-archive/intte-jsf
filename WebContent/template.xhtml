@@ -78,17 +78,10 @@
 	<div class="jumbotron">
 		<div class="container" id="content">
 			<h1>
-				<h:outputText value="#{i18n.title}" />
+				#{i18n[pageDescriptionBean.titleKey]}
 			</h1>
-			<p>This is a template for a simple marketing or informational
-				website. It includes a large callout called a jumbotron and three
-				supporting pieces of content. Use it as a starting point to create
-				something more unique.</p>
-			<p>Login: chrigi Password: foobar</p>
-			<h:outputText value="Logged in: #{userBean.loggedIn}"></h:outputText>
-
 			<p>
-				<!-- <a class="btn btn-primary btn-lg" role="button">Learn more »</a>-->
+			    #{i18n[pageDescriptionBean.descKey]}
 			</p>
 		</div>
 	</div>
