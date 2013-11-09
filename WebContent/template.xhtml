@@ -28,8 +28,8 @@
 			<div class="navbar-header">
 				<!-- <button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-collapse">-->
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
+				<span class="icon-bar" /> <span class="icon-bar" /> <span
+					class="icon-bar" />
 				<!-- </button>-->
                 <h:link styleClass="navbar-brand" outcome="list_posts" value="#{i18n.postList}" />
 
@@ -50,22 +50,20 @@
                                 <p:watermark for="password" value="#{i18n.password}" />
                             </h:inputSecret>
 						</div>
-						<div class="form-group">
-							<h:outputLink styleClass="btn btn-primary" value="register.xhtml">#{i18n['signup']}</h:outputLink>
-							<h:commandButton styleClass="btn btn-success"
-								action="#{userBean.doLogin}" value="#{i18n['login']}"></h:commandButton>
-						</div>
-					</h:panelGroup>
+                        <div class="form-group">
+                            <h:commandButton styleClass="btn btn-success"
+                                             action="#{userBean.doLogin}" value="#{i18n.login}" />
+                        </div>
+                        <div class="form-group">
+                            <h:outputLink styleClass="btn btn-primary" value="register.xhtml">#{i18n.signup}</h:outputLink>
+                        </div>
+                    </h:panelGroup>
 					<!-- / Login Container -->
 					<!--  Loggedin Container -->
 					<h:panelGroup rendered="#{userBean.loggedIn}">
 						<div class="form-group">
-							<h:outputText styleClass="banner-text"
-								value="#{i18n['welcome']} #{userBean.username}"></h:outputText>
-						</div>
-						<div class="form-group">
 							<h:commandButton styleClass="btn btn-success"
-								action="#{userBean.doLogout}" value="#{i18n['logout']}"></h:commandButton>
+								action="#{userBean.doLogout}" value="#{i18n.logout} #{userBean.username}" />
 						</div>
 					</h:panelGroup>
 					<!--  / Loggedin Container -->
@@ -80,7 +78,7 @@
 	<div class="jumbotron">
 		<div class="container" id="content">
 			<h1>
-				<h:outputText value="#{i18n['title']}" />
+				<h:outputText value="#{i18n.title}" />
 			</h1>
 			<p>This is a template for a simple marketing or informational
 				website. It includes a large callout called a jumbotron and three
