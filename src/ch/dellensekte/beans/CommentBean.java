@@ -13,14 +13,6 @@ public class CommentBean {
     private String commentText;
     private boolean visible = false;
 
-    public Comment getComment() {
-        return comment;
-    }
-
-    public void setComment(Comment comment) {
-        this.comment = comment;
-    }
-
     public String getCommentText() {
         return commentText;
     }
@@ -36,15 +28,14 @@ public class CommentBean {
     }
 
     public void addComment(Comment c) {
-        System.out.println("commentTheComment");
         this.createComment();
         c.addComment(this.comment);
         this.commentText = null;
     }
 
     private void createComment() {
-        DBBean db = BeanHelper.getDBBean();
-        User u = db.getUser("chrigi");
+        UserBean ub = BeanHelper.getUserBean();
+        User u = ub.getUser();
         this.comment = new Comment(this.commentText, 0, 0, u);
     }
 

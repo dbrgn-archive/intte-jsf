@@ -8,6 +8,7 @@ import ch.dellensekte.beans.UserBean;
 public class BeanHelper {
 
 	public static Object getApplicationBean(String name) {
+
 		return FacesContext.getCurrentInstance().getExternalContext().getApplicationMap().get(name);
 	}
 
@@ -16,6 +17,6 @@ public class BeanHelper {
 	}
 
 	public static UserBean getUserBean() {
-		return (UserBean) BeanHelper.getApplicationBean("userBean");
+		return (UserBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userBean");
 	}
 }
