@@ -41,14 +41,8 @@ public class RegisterBean implements Serializable {
 	}
 
 	public String doRegister() {
-		if (this.username == null || this.password == null) {
-			return "register.xhtml";
-		}
-		if (BeanHelper.getDBBean().userExists(username)) {
-			return "register.xhtml";
-		}
 		BeanHelper.getDBBean().db.registerNewUser(username, password);
-		return this.getReferer();
+		return this.getReferer() + "?faces-redirect=true";
 	}
 
 	public String getReferer() {
@@ -56,7 +50,7 @@ public class RegisterBean implements Serializable {
 	}
 
 	public void setReferer(String referer) {
-		if (this.referer == null) {
+		if (referer == null) {
 			this.referer = "/index.xhtml";
 		} else {
 			this.referer = referer;

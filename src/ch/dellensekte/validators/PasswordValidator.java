@@ -16,7 +16,6 @@ public class PasswordValidator implements Validator {
 	public void validate(FacesContext arg0, UIComponent arg1, Object arg2) throws ValidatorException {
 		Object pw2 = arg0.getExternalContext().getRequestParameterMap().get("form:password2");
 		FacesMessage msg;
-		System.out.println("beide passwörter sind leer pw1:" + arg2 + " pw2:" + pw2);
 		if (arg2.equals("") && pw2.equals("")) {
 			msg = new FacesMessage(I18n.getString("password.empty"));
 			throw new ValidatorException(msg);
