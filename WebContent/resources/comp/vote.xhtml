@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+        >
+
+<composite:interface>
+    <composite:attribute name="post"/>
+</composite:interface>
+
+<composite:implementation>
+    <div class="voteContainer">
+        <h:commandLink rendered="#{userBean.loggedIn}" action="#{cc.attrs.post.voteUp}">
+            <f:ajax event="action" render="rating"/>
+
+            <div class="voteButton up"><span>upvote</span></div>
+        </h:commandLink>
+        <h:panelGroup id="nodownvote" rendered="#{!userBean.loggedIn}">
+            <div class="voteButton up"><span>upvote</span></div>
+            <p:tooltip for="nodownvote" value="Not logged in, you can't vote!" />
+        </h:panelGroup>
+
+        <div class="postScore text-center"><span><h:outputText id="rating" value="#{cc.attrs.post.rating}"/></span>
+        </div>
+        <h:commandLink rendered="#{userBean.loggedIn}" action="#{cc.attrs.post.voteDown}">
+            <f:ajax event="action" render="rating"/>
+
+            <div class="voteButton down"><span>downvote</span></div>
+        </h:commandLink>
+        <h:panelGroup id="noupvote" rendered="#{!userBean.loggedIn}">
+            <div class="voteButton down"><span>downvote</span></div>
+            <p:tooltip for="noupvote" value="Not logged in, you can't vote!" />
+        </h:panelGroup>
+
+    </div>
+</composite:implementation>
+</html>

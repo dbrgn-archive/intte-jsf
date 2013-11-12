@@ -29,4 +29,8 @@ public class DBBean {
 	public boolean userExists(String username) {
 		return db.users.get(username) != null;
 	}
+
+    public void addPost(Post post) {
+        db.addPost(post);
+    }
 }

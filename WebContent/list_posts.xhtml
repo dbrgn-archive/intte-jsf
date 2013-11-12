@@ -1,44 +1,36 @@
 <ui:composition template="template.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
-	<ui:define name="content">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:cust="http://java.sun.com/jsf/composite/comp"
+        >
+    <ui:define name="content">
 
         <div class="row">
 
-		<h:dataTable var="post" value="#{postsBean.posts}" styleClass="table posts">
+            <ui:repeat var="post" value="#{postsBean.posts}" styleClass="posts">
 
-            <h:column>
-                <h:form>
-                    <div class="voteContainer">
+                <div class="post">
+                    <h:form>
+                        <cust:vote post="#{post}" />
+                        <div class="postContainer">
+                            <h:commandLink styleClass="postLink" action="#{postBean.setPost(post)}">
+                                <h2 class="postTitle">#{post.title}</h2>
 
-                        <h:commandLink action="#{post.voteUp}">
-                            <f:ajax event="action" render="rating" />
-                            <div class="voteButton up"><span>Upvote</span></div>
-                        </h:commandLink>
-                        <div class="postScore text-center"><span><h:outputText id="rating" value="#{post.rating}" /></span></div>
-                        <h:commandLink action="#{post.voteDown()}">
-                            <f:ajax event="action" render="rating"/>
-                            <div class="voteButton down"><span>Downvote</span></div>
-                        </h:commandLink>
+                                <div class="postInfo">
+                                    <span class="postTime">#{post.durationSinceCreated.value} #{i18n[post.durationSinceCreated.unit]} #{i18n.ago} </span> #{i18n.by}
+                                    <span class="postUser">#{post.user.username}</span>
+                                </div>
+                                <p class="comments"><span class="glyphicon glyphicon-comment"/>
+                                    <span>#{post.deepCommentCount} #{i18n.comment}</span></p>
+                            </h:commandLink>
+                        </div>
+                    </h:form>
+                </div>
 
-                    </div>
-                    <div class="postContainer">
-                        <h:commandLink styleClass="postLink" action="#{postBean.setPost(post)}" >
-                            <h2><h:outputText styleClass="postTitle" value="#{post.title}" /></h2>
-                            <div class="postInfo">
-                                <span class="postTime">#{post.durationSinceCreated.value} #{post.durationSinceCreated.unit} #{i18n.ago} </span> #{i18n.by} <h:outputText styleClass="postUser" value="#{post.user.username}" />
-                            </div>
-                            <p class="comments"><span class="glyphicon glyphicon-comment" /> <span>#{post.commentCount} #{i18n.comment}</span></p>
-                        </h:commandLink>
-                    </div>
-                </h:form>
-            </h:column>
-
-		</h:dataTable>
+            </ui:repeat>
 
         </div>
-	</ui:define>
+    </ui:define>
 </ui:composition>

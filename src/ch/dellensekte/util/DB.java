@@ -40,9 +40,13 @@ public class DB {
 		// Create comments
 		Comment c1 = new Comment("Sehr guter Post", 0, 0, danilo);
 		Comment c2 = new Comment("Sehr sinnvoller Kommentar", 0, 0, jonas);
-		Comment c3 = new Comment("finde ich auch", 0, 0, jonas);
+		Comment c3 = new Comment("finde ich auch", 0, 0, chrigi);
+        Comment c4 = new Comment("deeply nested! nice!", 0, 0, jonas);
+        Comment c5 = new Comment("finde ich auch", 0, 0, danilo);
 
 		c1.addComment(c2);
+        c1.addComment(c4);
+        c1.addComment(c5);
 		c2.voteUp();
 		c2.addComment(c3);
 		p4.addComment(c1);
@@ -62,5 +66,9 @@ public class DB {
 		User newUser = new User(username, password);
 		this.users.put(username, newUser);
 	}
+
+    public void addPost(Post post) {
+        this.posts.add(post);
+    }
 
 }
