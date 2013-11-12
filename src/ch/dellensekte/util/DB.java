@@ -43,13 +43,16 @@ public class DB {
 		Comment c3 = new Comment("finde ich auch", 0, 0, chrigi);
         Comment c4 = new Comment("deeply nested! nice!", 0, 0, jonas);
         Comment c5 = new Comment("finde ich auch", 0, 0, danilo);
+		Comment c6 = new Comment("\"If in doubt, add another layer of comments!\"", 0, 0, danilo);
 
 		c1.addComment(c2);
         c1.addComment(c4);
         c1.addComment(c5);
-		c2.voteUp();
+		c2.voteDown(); c2.voteDown();
 		c2.addComment(c3);
 		p4.addComment(c1);
+		c4.addComment(c6);
+		c6.voteUp(); c6.voteUp(); c6.voteUp();
 
 	}
 
