@@ -26,10 +26,5 @@ public class PasswordValidator implements Validator {
 			throw new ValidatorException(msg);
 		}
 
-		/*
-		 * if (!arg2.toString().equals(pw2.toString())) { msg = new
-		 * FacesMessage(I18n.getString("password.match")); throw new
-		 * ValidatorException(msg); }
-		 */
 	}
 }
