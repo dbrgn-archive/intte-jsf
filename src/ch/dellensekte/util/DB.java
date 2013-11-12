@@ -58,7 +58,6 @@ public class DB {
 	}
 
 	public List<Post> getPosts() {
-		Collections.sort(posts);
 		return posts;
 	}
 
