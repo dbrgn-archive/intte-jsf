@@ -24,7 +24,7 @@
         </h:commandLink>
         <h:panelGroup id="nodownvote" rendered="#{!userBean.loggedIn}">
             <div class="voteButton up"><span>upvote</span></div>
-            <p:tooltip for="nodownvote" value="Not logged in, you can't vote!" />
+            <p:tooltip for="nodownvote" value="#{i18n['vote.tooltip']}" />
         </h:panelGroup>
 
         <div class="postScore text-center"><span><h:outputText id="rating" value="#{cc.attrs.post.rating}"/></span>
@@ -36,7 +36,7 @@
         </h:commandLink>
         <h:panelGroup id="noupvote" rendered="#{!userBean.loggedIn}">
             <div class="voteButton down"><span>downvote</span></div>
-            <p:tooltip for="noupvote" value="Not logged in, you can't vote!" />
+            <p:tooltip for="noupvote" value="#{i18n['vote.tooltip']}" />
         </h:panelGroup>
 
     </div>
