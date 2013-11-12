@@ -1,6 +1,5 @@
 package ch.dellensekte.util;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,8 +11,8 @@ import ch.dellensekte.domain.User;
 
 public class DB {
 
-	List<Post> posts = new LinkedList<Post>();
-	public Map<String, User> users = new HashMap<String, User>();
+	final public List<Post> posts = new LinkedList<>();
+	final public Map<String, User> users = new HashMap<>();
 
 	public DB() {
 

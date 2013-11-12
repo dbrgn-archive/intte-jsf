@@ -12,7 +12,7 @@ import ch.dellensekte.util.DB;
 @ManagedBean(eager = true)
 @ApplicationScoped
 public class DBBean {
-	DB db = new DB();
+	final DB db = new DB();
 
 	public DBBean() {
 

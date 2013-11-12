@@ -37,10 +37,7 @@ public class UserBean {
 	public boolean isLoggedIn() {
 		if (this.user == null)
 			return false;
-		if (this.password.equals(this.user.getPassword())) {
-			return true;
-		}
-		return false;
+		return this.password.equals(this.user.getPassword());
 	}
 
 	public void doLogout() {

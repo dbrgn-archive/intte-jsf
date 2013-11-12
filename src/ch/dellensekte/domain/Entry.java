@@ -6,8 +6,8 @@ import java.util.List;
 
 public abstract class Entry implements Comparable<Entry> {
 
-	protected List<Comment> comments = new LinkedList<Comment>();
-    protected List<Comment> commentsFlat = new LinkedList<Comment>();
+	protected List<Comment> comments = new LinkedList<>();
+    protected List<Comment> commentsFlat = new LinkedList<>();
 	protected int upVotes;
 	protected int downVotes;
 	protected GregorianCalendar timestamp;
