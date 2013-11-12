@@ -25,7 +25,6 @@ public class URLValidator implements Validator {
         try {
             final String url = (String) o;
             new URL(url);
-
         } catch (MalformedURLException malformedURLException) {
             msg = new FacesMessage(I18n.getString("url.constraintsNotMatched"));
             throw new ValidatorException(msg);
