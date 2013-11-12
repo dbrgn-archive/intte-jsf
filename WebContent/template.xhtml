@@ -4,7 +4,8 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:pf="http://primefaces.org/ui">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -23,14 +24,14 @@
 </h:head>
 
 <h:body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
+    <h:panelGroup layout="block" class="navbar navbar-inverse navbar-fixed-top" p:role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<!-- <button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">-->
-				<span class="icon-bar" /> <span class="icon-bar" /> <span
-					class="icon-bar" />
-				<!-- </button>-->
+				<h:button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+				    <span class="icon-bar" /> <span class="icon-bar" /> <span
+					    class="icon-bar" />
+				</h:button>
                 <h:link styleClass="navbar-brand" outcome="list_posts" value="#{i18n.postList}" />
                 <h:link rendered="#{userBean.loggedIn}" styleClass="navbar-brand" outcome="add_post" value="#{i18n.addPost}" />
 			</div>
@@ -39,15 +40,15 @@
 					<!-- Login Container -->
 					<h:panelGroup rendered="#{!userBean.loggedIn}">
 						<div class="form-group">
-							<p:inputText id="username" styleClass="form-control"
+							<pf:inputText id="username" styleClass="form-control"
 								value="#{userBean.username}" >
-                                <p:watermark for="username" value="#{i18n.username}" />
-							</p:inputText>
+                                <pf:watermark for="username" value="#{i18n.username}" />
+							</pf:inputText>
 						</div>
 						<div class="form-group">
 							<h:inputSecret id="password" styleClass="form-control"
 								value="#{userBean.password}" >
-                                <p:watermark for="password" value="#{i18n.password}" />
+                                <pf:watermark for="password" value="#{i18n.password}" />
                             </h:inputSecret>
 						</div>
                         <div class="form-group">
@@ -72,7 +73,7 @@
 			</div>
 			<!--/.navbar-collapse -->
 		</div>
-	</div>
+	</h:panelGroup>
 
 	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
