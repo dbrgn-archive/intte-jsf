@@ -90,7 +90,7 @@ public abstract class Entry implements Comparable<Entry> {
 
     @Override
     public int compareTo(Entry o) {
-        return new Integer(this.getRating()).compareTo(this.getRating());
+        return new Integer(o.getRating()).compareTo(this.getRating());
     }
 
     public List<Comment> getCommentsFlat() {
