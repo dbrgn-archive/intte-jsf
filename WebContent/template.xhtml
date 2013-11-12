@@ -24,14 +24,15 @@
 </h:head>
 
 <h:body>
-    <h:panelGroup layout="block" class="navbar navbar-inverse navbar-fixed-top" p:role="navigation">
+	<h:panelGroup layout="block" class="navbar navbar-inverse navbar-fixed-top" p:role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<h:button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-				    <span class="icon-bar" /> <span class="icon-bar" /> <span
-					    class="icon-bar" />
-				</h:button>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar" />
+					<span class="icon-bar" />
+					<span class="icon-bar" />
+				</button>
                 <h:link styleClass="navbar-brand" outcome="list_posts" value="#{i18n.postList}" />
                 <h:link rendered="#{userBean.loggedIn}" styleClass="navbar-brand" outcome="add_post" value="#{i18n.addPost}" />
 			</div>
