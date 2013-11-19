@@ -15,7 +15,7 @@
                 <h1>#{i18n.submitLink}</h1>
                 <p>#{i18n.submitLinkSubtitle}</p>
             </div>
-            <div class="col-md-6 addPostForm">
+            <h:panelGroup class="col-md-6 addPostForm" rendered="#{userBean.loggedIn}">
 
                 <h:form styleClass="form-horizontal" id="form">
 
@@ -57,7 +57,11 @@
                     </div>
 
                 </h:form>
-            </div>
+            </h:panelGroup>
+
+            <h:panelGroup class="col-md-6 addPostForm" rendered="#{!userBean.loggedIn}">
+                <div class="alert alert-warning">#{i18n.pleaseLogIn}</div>
+            </h:panelGroup>
         </div>
 
     </ui:define>
