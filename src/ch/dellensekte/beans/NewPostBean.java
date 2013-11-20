@@ -58,7 +58,6 @@ public class NewPostBean {
         Post post = new Post(this.url, this.title, 0, 0, this.userBean.user);
         dBBean.addPost(post);
         postBean.setPost(post);
-        System.out.println("New post added: "+ post);
         return "post_detail?faces-redirect=true";
     }
 }

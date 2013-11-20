@@ -19,7 +19,6 @@ public class UserBean {
 
 	public void setUsername(String username) {
 		this.username = username;
-		System.out.println("username set to " + username);
 	}
 
 	public String getPassword() {
