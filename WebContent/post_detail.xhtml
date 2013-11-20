@@ -2,13 +2,14 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:cust="http://java.sun.com/jsf/composite/comp">
+                xmlns:cust="http://java.sun.com/jsf/composite/comp"
+        >
     <ui:define name="content">
 
         <!-- ***** POST ***** -->
         <div class="row posts">
             <h:form>
-                <cust:vote post="#{postBean.post}" />
+                <cust:vote post="#{postBean.post}"/>
 
                 <div class="postContainer">
                     <h2>#{postBean.post.title}</h2>

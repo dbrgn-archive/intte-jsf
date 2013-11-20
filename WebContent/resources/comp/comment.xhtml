@@ -7,7 +7,6 @@
       xmlns:composite="http://java.sun.com/jsf/composite"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:cust="http://java.sun.com/jsf/composite/comp">
 
 <composite:interface>
@@ -15,46 +14,49 @@
 </composite:interface>
 
 <composite:implementation>
-    <ui:repeat var="comment" value="${cc.attrs.commentList}">
+    <h:dataTable styleClass="table" var="comment" value="${cc.attrs.commentList}">
+        <h:column>
+            <div class="comment level-#{comment.level}">
+                <h:form>
+                    <cust:vote post="#{comment}"/>
+                </h:form>
 
-        <div class="comment level-#{comment.level}">
-            <h:form>
-                <cust:vote post="#{comment}" />
-            </h:form>
                 <div class="commentTextContainer">
                     <p>
                         <span>#{comment.durationSinceCreated.value} #{i18n[comment.durationSinceCreated.unit]} #{i18n.ago},</span>
                         <span>#{comment.user.username} #{i18n.said}:</span>
                     </p>
+
                     <p>#{comment.comment}</p>
                 </div>
 
-            <h:panelGroup rendered="#{userBean.loggedIn}">
-                <h:form>
-                    <h:commandLink action="#{commentBean.makeReplyVisible}">
-                        <f:ajax event="action" render="replyform"/>
-                        <span class="glyphicon glyphicon-comment"/> #{i18n.reply}
-                    </h:commandLink>
+                <h:panelGroup rendered="#{userBean.loggedIn}">
+                    <h:form>
+                        <h:commandLink action="#{commentBean.makeReplyVisible}">
+                            <f:ajax event="action" render="replyform"/>
+                            <span class="glyphicon glyphicon-comment"/> #{i18n.reply}
+                        </h:commandLink>
 
 
-                    <h:panelGroup id="replyform">
-                        <h:panelGroup styleClass="#{commentBean.visible ? '' : 'hidden'}">
-                        <div class="replyContainer col-md-6 ">
-                            <h:inputTextarea  value="#{commentBean.commentText}"
-                                             required="true"
-                                             styleClass="commentTextarea form-control">
-                            </h:inputTextarea>
+                        <h:panelGroup id="replyform">
+                            <h:panelGroup styleClass="#{commentBean.visible ? '' : 'hidden'}">
+                                <div class="replyContainer col-md-6 ">
+                                    <h:inputTextarea value="#{commentBean.commentText}"
+                                                     required="true"
+                                                     styleClass="commentTextarea form-control"
+                                            >
+                                    </h:inputTextarea>
 
-                            <h:commandButton value="#{i18n.reply}" action="#{commentBean.addComment(comment)}"
-                                             styleClass="btn btn-primary postCommentButton">
-                            </h:commandButton>
-                        </div>
+                                    <h:commandButton value="#{i18n.reply}" action="#{commentBean.addComment(comment)}"
+                                                     styleClass="btn btn-primary postCommentButton">
+                                    </h:commandButton>
+                                </div>
+                            </h:panelGroup>
                         </h:panelGroup>
-                    </h:panelGroup>
-                </h:form>
-            </h:panelGroup>
-        </div>
-
-    </ui:repeat>
+                    </h:form>
+                </h:panelGroup>
+            </div>
+        </h:column>
+    </h:dataTable>
 </composite:implementation>
 </html>
